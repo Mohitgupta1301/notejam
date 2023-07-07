@@ -7,10 +7,10 @@ pipeline {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
   }
   stages
-  stage('Generate') {
+  stage('Checkout') {
     node {
         checkout scm
-        stash 'source'
+        stash 'https://github.com/Mohitgupta1301/notejam.git'
     }
   stage('Build') {
       steps {
