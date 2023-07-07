@@ -6,7 +6,6 @@ pipeline {
   environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
   }
-  stages
   stage('Checkout') {
     node {
         checkout scm
