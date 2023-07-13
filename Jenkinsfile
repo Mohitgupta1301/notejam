@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'kubectl apply -f deployment.yaml' // Replace with your deployment script or configuration
+                sh 'kubectl apply -f deployment.yaml' 
             }
         }
     }
