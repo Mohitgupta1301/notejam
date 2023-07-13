@@ -1,22 +1,6 @@
 pipeline {
     agent {
         kubernetes {
-            label 'my-kubernetes-agent' // Label matching a Kubernetes agent in Jenkins
-            yaml """
-                apiVersion: v1
-                kind: Pod
-                metadata:
-                  labels:
-                    jenkins: my-kubernetes-agent
-                spec:
-                  containers:
-                  - name: docker
-                    image: docker
-                    command:
-                    - cat
-                    tty: true
-            """
-        }
     }
     stages {
         stage('Checkout') {
