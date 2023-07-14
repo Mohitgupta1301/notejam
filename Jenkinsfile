@@ -25,7 +25,7 @@ pipeline {
 
       steps {
 
-        git 'https://github.com/Mohitgupta1301/notejam.git'
+        git branch: 'master', url: 'https://github.com/Mohitgupta1301/notejam.git'
 
       }
 
