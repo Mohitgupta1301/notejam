@@ -5,7 +5,7 @@ metadata:
 
   name: notejam-deployment
   labels:
-    app: nodeapp
+    app: notejam
 
 spec:
 
