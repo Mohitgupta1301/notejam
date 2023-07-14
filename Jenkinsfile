@@ -5,6 +5,7 @@ pipeline {
   environment {
 
     dockerimagename = "mohit1301/frontend"
+   registeryCredential = 'dockerhub'
 
     dockerImage = ""
 
@@ -38,7 +39,7 @@ pipeline {
 
         script {
 
-          dockerImage = docker.build frontend
+          dockerImage = docker.build dockerimagename + ":$BUILD_NUMBER"
 
         }
 
@@ -50,11 +51,6 @@ pipeline {
 
     stage('Pushing Image') {
 
-      environment {
-
-               registryCredential = 'dockerhublogin'
-
-           }
 
       steps{
 
@@ -91,7 +87,4 @@ pipeline {
  
 
   }
-
- 
-
-}
+  }
