@@ -29,9 +29,9 @@ pipeline {
     stage('Building Image') {
 
       steps{
-
+           
         script {
-
+          sh 'systemctl start docker'
           dockerImage = docker.build imagename
 
         }
