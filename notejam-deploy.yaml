@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notejam-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notejam-app
+  template:
+    metadata:
+      labels:
+        app: notejam-app
+    spec:
+      containers:
+        - name: notejam-app
+          image: mohit1301/frontend
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: notejam-config
