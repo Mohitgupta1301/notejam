@@ -35,7 +35,7 @@ pipeline {
         sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins_home/workspace/jenkins-notejam/service-deployment.yaml"
         sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins_home/workspace/jenkins-notejam/persistentvolume.yaml"
         sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins_home/workspace/jenkins-notejam/notejam-service.yaml"
-        sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins_home/jenkins-notejam/notejam-deploy.yaml"
+        sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins_home/workspace/jenkins-notejam/notejam-deploy.yaml"
       }
     }
   }
