@@ -52,31 +52,13 @@ pipeline {
     }
 
  
-
-    stage('Building Image') {
-
+stage('Building our image') 
+{ 
+steps { 
+sh "docker build -t ${imagename}:$BUILD_NUMBER .
+   "dockerImage = "${imagename}:$BUILD_NUMBER" 
+}  } 
  
-
-      steps{
-
-
-        script {
-
-
-          dockerImage = sudo docker.build imagename
-
- 
-
-        }
-
- 
-
-      }
-
- 
-
-    }
-
  
 
     stage('Pushing Image') {
