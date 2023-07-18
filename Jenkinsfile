@@ -26,19 +26,20 @@ pipeline {
 
     }
 
-    stage('Building Image') {
+   
+stage('Building our image') 
+{ 
+steps { 
+sh "docker build -t ${registry}:$BUILD_NUMBER .
+   "dockerImage = "${registry}:$BUILD_NUMBER"  }  } 
+ stage('Deploying image') 
+{ 
+steps { 
+sh "docker login -u <username> -p <password>" 
+sh "docker push ${registry}:$BUILD_NUMBER"
+}
+}
 
-      steps{
-           
-        script {
-        
-          dockerImage = sudo docker.build imagename
-
-        }
-
-      }
-
-    }
 
     stage('Pushing Image') {
 
