@@ -8,7 +8,7 @@ pipeline {
 
     registryCredential = 'dockerhub_id'
 
-    KUBECONFIG = credentials('config_id')
+    KUBECONFIG = credentials('config_data')
 
   }
 
