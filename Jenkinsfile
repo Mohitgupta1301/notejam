@@ -22,9 +22,12 @@ pipeline {
     stage('Pushing Image') {
       steps {
         script {
-          docker.withRegistry('', registryCredential) {
-            dockerImage.push("latest")
-          }
+          // Login to Docker Hub
+          //sh "docker login -u <your-docker-hub-username> -p <your-docker-hub-password>"
+          
+          // Push the image to Docker Hub
+          sh "docker push ${imagename}:${BUILD_NUMBER}"
+          sh "docker push ${imagename}:latest"
         }
       }
     }
