@@ -56,8 +56,12 @@ stage('Building our image')
 { 
 steps { 
 sh "docker build -t ${imagename}:$BUILD_NUMBER"
+}
+steps {
+ 
     dockerImage = "${imagename}:$BUILD_NUMBER" 
-}  } 
+}  
+} 
  
  
 
