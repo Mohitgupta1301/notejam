@@ -6,7 +6,7 @@ pipeline {
 
     dockerImage = ""
 
-    registryCredential = 'dockerhub_id'
+    registryCredential = 'dockerhub'
 
     KUBECONFIG = credentials('config_data')
 
