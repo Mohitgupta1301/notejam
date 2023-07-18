@@ -55,8 +55,7 @@ pipeline {
 stage('Building our image') 
 { 
 steps { 
-sh "docker build -t ${imagename}:$BUILD_NUMBER"
- dockerImage = "${imagename}:$BUILD_NUMBER" 
+dockerImage = sh "docker build -t ${imagename}:$BUILD_NUMBER"
 }  
 } 
  
