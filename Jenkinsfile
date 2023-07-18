@@ -32,7 +32,7 @@ pipeline {
            
         script {
         
-          dockerImage = docker.build imagename
+          dockerImage = sudo docker.build imagename
 
         }
 
@@ -73,7 +73,6 @@ pipeline {
 
 
     }
-
   }
 
 }
