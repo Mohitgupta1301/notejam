@@ -16,6 +16,12 @@ pipeline {
   
   stages {
 
+    stage('Disable Sandbox') { 
+    steps {
+         sandbox true 
+     } 
+    }
+
     stage('Cloning Repo') {
 
       steps {
