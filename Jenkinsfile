@@ -31,7 +31,11 @@ pipeline {
       steps {
         script {
           withSonarQubeEnv('SonarQube Server') {
-            sh "sonar-scanner -Dsonar.organization=mohit1301 -Dsonar.projectKey=Mohitgupta1301_notejam -Dsonar.sources=."
+            sh sonar-scanner \
+               -Dsonar.organization=mohit1301 \
+               -Dsonar.projectKey=Mohitgupta1301_notejam \
+               -Dsonar.sources=. \
+               -Dsonar.host.url=https://sonarcloud.io
           }
         }
       }
