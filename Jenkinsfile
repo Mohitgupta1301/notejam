@@ -6,20 +6,7 @@ pipeline {
     KUBECONFIG = credentials('config_data')
     SCANNER_HOME = tool('sonar')
   }
-
-  def AGENT_LABEL = null
-
-node('master') {
-  stage('Checkout and set agent'){
-     checkout scm
-     ### Or just use any other approach to figure out agent label: read file, etc
-     if (env.BRANCH_NAME == 'master') {
-        AGENT_LABEL = "prod"
-     } else {
-        AGENT_LABEL = "dev"
-     }
-   }
-}
+  agent any 
   stages {
     stage('Cloning Repo') {
       steps {
