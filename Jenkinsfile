@@ -30,7 +30,7 @@ pipeline {
     stage('SonarQube Analysis') {
       steps {
         script {
-          withSonarQubeEnv('SonarQube Server') {
+          withSonarQubeEnv('SONAR_TOKEN') {
             sh "sonar-scanner \
                -Dsonar.organization=mohit1301 \
                -Dsonar.projectKey=Mohitgupta1301_notejam \
