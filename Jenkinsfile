@@ -8,7 +8,7 @@ pipeline {
   }
   agent any 
   stages {
-    stage('Cloning Repository') {
+    stage('Cloning Repo') {
       steps {
         git branch:'master',url: 'https://github.com/Mohitgupta1301/notejam.git'
       }
@@ -20,7 +20,7 @@ pipeline {
         }
       }
     }
-    stage('Pushing Image to docker hub') {
+    stage('Pushing Image to docker-hub') {
       steps {
         script {
           sh "sudo docker push ${imagename}:latest"
