@@ -8,7 +8,7 @@ pipeline {
   }
   agent any 
   stages {
-    stage('Cloning Repo') {
+    stage('Cloning Repository') {
       steps {
         git branch:'master',url: 'https://github.com/Mohitgupta1301/notejam.git'
       }
@@ -38,7 +38,7 @@ pipeline {
         }
       }
     }
-     stage("Quality gate") {
+     stage("Quality Gate") {
             steps {
               timeout(time: 1, unit: 'MINUTES') {
               waitForQualityGate abortPipeline: true
