@@ -40,7 +40,7 @@ pipeline {
 }
 stage('SonarQube Analysis') {
       steps {
-        script {
+      
           withSonarQubeEnv('Mohit1301') {
            sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=mohit1301 \
         -Dsonar.java.binaries=build/classes/java/ \
@@ -49,4 +49,4 @@ stage('SonarQube Analysis') {
           }
         }
       }
-    }
+    
