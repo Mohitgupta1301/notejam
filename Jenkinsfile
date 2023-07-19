@@ -20,7 +20,7 @@ pipeline {
         }
       }
     }
-    stage('Pushing Image') {
+    stage('Pushing Image to docker hub') {
       steps {
         script {
           sh "sudo docker push ${imagename}:latest"
