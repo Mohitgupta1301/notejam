@@ -4,6 +4,7 @@ pipeline {
     dockerImage = ""
     registryCredential = 'dockerhub'
     KUBECONFIG = credentials('config_data')
+    SONAR_TOKEN = credentials('SONAR_TOKEN')
   }
   agent any 
   stages {
@@ -22,11 +23,16 @@ pipeline {
     stage('Pushing Image') {
       steps {
         script {
-          // Login to Docker Hub
-          //sh "docker login -u <your-docker-hub-username> -p <your-docker-hub-password>"
-          
-          // Push the image to Docker Hub
           sh "sudo docker push ${imagename}:latest"
+        }
+      }
+    }
+    stage('SonarQube Analysis') {
+      steps {
+        script {
+          withSonarQubeEnv('SonarQube Server') {
+            sh "sonar-scanner -Dsonar.organization=mohit1301 -Dsonar.projectKey=Mohitgupta1301_notejam -Dsonar.sources=."
+          }
         }
       }
     }
