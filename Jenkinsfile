@@ -46,7 +46,7 @@ pipeline {
      }
   }
     
-    stage('Deploying the Application to the K8 Cluster') {
+    stage('Deploying the Application to the K8s Cluster') {
       steps {
         sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/service-deployment.yaml"
         sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/persistentvolumeclaim.yaml"
