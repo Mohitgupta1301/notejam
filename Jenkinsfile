@@ -36,17 +36,15 @@ pipeline {
         sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/notejam-deploy.yaml"
       }
     }
-  }
-}
-stage('SonarQube Analysis') {
+    stage('SonarQube Analysis') {
       steps {
-      
-          withSonarQubeEnv('Mohit1301') {
-           sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=mohit1301 \
-        -Dsonar.java.binaries=build/classes/java/ \
-        -Dsonar.projectKey=Mohitgupta1301_notejam  \
-        -Dsonar.sources=.'''
-          }
+        withSonarQubeEnv('Mohit1301') {
+          sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=mohit1301 \
+            -Dsonar.java.binaries=build/classes/java/ \
+            -Dsonar.projectKey=Mohitgupta1301_notejam  \
+            -Dsonar.sources=. '''
         }
       }
-    
+    }
+  }
+}
