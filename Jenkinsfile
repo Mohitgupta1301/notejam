@@ -4,7 +4,7 @@ pipeline {
     dockerImage = ""
     registryCredential = 'dockerhub'
     KUBECONFIG = credentials('config_data')
-    SONAR_TOKEN = credentials('SONAR_TOKEN')
+    SCANNER_HOME = tool('sonar')
   }
   agent any 
   stages {
@@ -42,11 +42,10 @@ stage('SonarQube Analysis') {
       steps {
         script {
           withSonarQubeEnv('Mohit1301') {
-            sh "sonar-scanner \
-               -Dsonar.organization=mohit1301 \
-               -Dsonar.projectKey=Mohitgupta1301_notejam \
-               -Dsonar.sources=. \
-               -Dsonar.host.url=https://sonarcloud.io"
+           sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=mohit1301 \
+        -Dsonar.java.binaries=build/classes/java/ \
+        -Dsonar.projectKey=Mohitgupta1301_notejam  \
+        -Dsonar.sources=.'''
           }
         }
       }
