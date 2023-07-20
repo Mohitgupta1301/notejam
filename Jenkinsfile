@@ -13,7 +13,7 @@ pipeline {
         git branch:'master',url: 'https://github.com/Mohitgupta1301/notejam.git'
       }
     }
-    stage('Building our image') {
+    stage('Building our images') {
       steps {
         script {
           dockerImage = sh "docker build -t ${imagename}:$BUILD_NUMBER ."
