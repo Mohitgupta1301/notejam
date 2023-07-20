@@ -28,7 +28,7 @@ pipeline {
       }
     }
 
-    stage('SonarQube Analysis') {
+    stage('SonarQube Analysisy') {
       steps {
         withSonarQubeEnv('Mohit1301') {
           sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=mohit1301 \
