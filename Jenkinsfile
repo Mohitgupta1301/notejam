@@ -28,7 +28,7 @@ pipeline {
       }
     }
 
-      stages {
+      
     stage ("Prompt for input") {
       steps {
         script {
@@ -46,7 +46,7 @@ pipeline {
       }
     }
   }
-}
+
 
     stage('SonarQube Analysis') {
       steps {
@@ -77,4 +77,4 @@ pipeline {
     
 }
 
-}
+
