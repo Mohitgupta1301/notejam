@@ -1,4 +1,5 @@
 pipeline {
+  agent { dockerfile true }
   environment {
     imagename = "mohit1301/frontend"
     dockerImage = ""
@@ -6,7 +7,6 @@ pipeline {
     KUBECONFIG = credentials('config_data')
     SCANNER_HOME = tool('sonar')
   }
-  agent any 
   stages {
     stage('Cloning Repository') {
       steps {
