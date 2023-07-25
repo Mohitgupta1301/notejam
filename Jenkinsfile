@@ -6,12 +6,7 @@ pipeline {
     KUBECONFIG = credentials('config_data')
     SCANNER_HOME = tool('sonar')
   } 
-  agent {
-       kubernetes {
-      yamlFile 'demo.yaml'
-      idleMinutes 1
-    }
-  }
+  agent any
   stages {
     stage('Cloning Repository') {
       steps {
