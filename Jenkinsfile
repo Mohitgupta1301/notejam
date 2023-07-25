@@ -5,8 +5,8 @@ pipeline {
     registryCredential = 'dockerhub'
     KUBECONFIG = credentials('config_data')
     SCANNER_HOME = tool('sonar')
-  } 
-  agent any
+  }
+  agent none
   stages {
     stage('Cloning Repository') {
       steps {
@@ -46,16 +46,18 @@ pipeline {
             }
      }
   }
-    
-    stage('Deploying the Application to the K8s Cluster') {
-      steps {
-        sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/service-deployment.yaml"
-        sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/persistentvolumeclaim.yaml"
-        sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/notejam-service.yaml"
-        sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/notejam-deploy.yaml"
-      }
-    }
-    
-}
-}
+  // Add dynamic agent
+  agent {
+    label 'my-dynamic-agent'
+  }
 
+  stage('Deploying the Application to the K8s Cluster') {
+    steps {
+      sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/service-deployment.yaml"
+      sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/persistentvolumeclaim.yaml"
+      sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/notejam-service.yaml"
+      sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/notejam-deploy.yaml"
+    }
+  }
+}
+}
