@@ -6,7 +6,7 @@ pipeline {
     KUBECONFIG = credentials('config_data')
     SCANNER_HOME = tool('sonar')
   }
-  agent none
+  agent any
   stages {
     stage('Cloning Repository') {
       steps {
@@ -46,10 +46,7 @@ pipeline {
             }
      }
   }
-  // Add dynamic agent
-  agent {
-    label 'my-dynamic-agent'
-  }
+  
 
   stage('Deploying the Application to the K8s Cluster') {
     steps {
