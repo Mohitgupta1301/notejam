@@ -7,7 +7,7 @@ pipeline {
     SCANNER_HOME = tool('sonar')
   }
   agent {
-    jenkins-agent }
+    labels 'jenkins-agent' }
   stages {
     stage('Cloning Repository') {
       steps {
