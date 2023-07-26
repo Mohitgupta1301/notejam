@@ -6,7 +6,8 @@ pipeline {
     KUBECONFIG = credentials('config_data')
     SCANNER_HOME = tool('sonar')
   }
-  agent any
+  agent {
+    jenkins-agent }
   stages {
     stage('Cloning Repository') {
       steps {
