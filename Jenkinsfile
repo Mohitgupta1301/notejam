@@ -13,6 +13,11 @@ pipeline {
         git branch:'master',url: 'https://github.com/Mohitgupta1301/notejam.git'
       }
     }
+    stage('Create Dynamic Agent') {
+       steps {
+         sh "sudo kubectl create daemon set jenkins-agent --image=mohit1301/frontend:latest --name=jenkins-agent"
+  }
+}
     stage('Building our image') {
       steps {
         script {
