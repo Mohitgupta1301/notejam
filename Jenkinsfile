@@ -1,4 +1,16 @@
 pipeline {
+    agent {
+    dynamicAgents() {
+      // Define a method that returns an agent object
+      def getAgent() {
+        return [
+          label: 'jenkins-agent',
+          node: 'my-node'
+        ]
+      }
+      return getAgent()
+    }
+    }
   environment {
     imagename = "mohit1301/frontend"
     dockerImage = ""
