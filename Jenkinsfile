@@ -5,18 +5,15 @@ pipeline {
     registryCredential = 'dockerhub'
     KUBECONFIG = credentials('config_data')
     SCANNER_HOME = tool('sonar')
-  }
+
+  } agent any
   stages {
     stage('Cloning Repository') {
       steps {
         git branch:'master',url: 'https://github.com/Mohitgupta1301/notejam.git'
       }
     }
-    stage('Create Dynamic Agent') {
-       steps {
-         sh "sudo kubectl create daemon set jenkins-agent --image=mohit1301/frontend:latest --name=jenkins-agent"
-  }
-}
+    
     stage('Building our image') {
       steps {
         script {
@@ -58,7 +55,7 @@ pipeline {
       sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/persistentvolumeclaim.yaml"
       sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/notejam-service.yaml"
       sh "sudo kubectl --kubeconfig=${KUBECONFIG} apply -f /var/lib/jenkins/workspace/jenkins-kubernetes/notejam-deploy.yaml"
-      sh "sudo kubectl expose deployment jenkins-agent --type=NodePort"
+    
     }
   }
 }
