@@ -34,12 +34,12 @@ pipeline {
 
     stage('SonarQube Analysis') {
       steps {
-        sh """
-          $SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=mohit1301 \
+        withSonarQubeEnv('Mohit1301') {
+         sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=mohit1301 \
             -Dsonar.java.binaries=build/classes/java/ \
             -Dsonar.projectKey=Mohitgupta1301_notejam  \
-            -Dsonar.sources=.
-        """
+            -Dsonar.sources=.'''
+              } 
       }
     }
 
