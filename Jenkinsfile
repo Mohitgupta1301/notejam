@@ -9,7 +9,7 @@ pipeline {
 
   } 
   stages {
-    stage('Cloning Repository') {
+    stage('Cloning Repositories') {
       steps {
         git branch:'master',url: 'https://github.com/Mohitgupta1301/notejam.git'
       }
